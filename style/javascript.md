@@ -55,6 +55,7 @@ parameterNamesLikeThis
 propertyNamesLikeThis
 SYMBOLIC_CONSTANTS_LIKE_THIS
 ```
+Define all constants at the top of the file 
 
 When naming variables and properties referring to jQuery element
 objects, prefix the name with `$`:
@@ -98,11 +99,13 @@ developers to switch between the two.
 #### File names
 
 ```
-file-names-like-this.js
-template-names-like-this.handlebars
+file_names_like_this.js
+template_names_like_this.handlebars
 ```
 
 #### Indentation
+
+DO NOT USE TABS.  Tabs and spaces together is not readable, and will generate compilation errors in some languages.
 
 Use 4-space indenting for all code. Do not use tabs.
 
@@ -113,7 +116,7 @@ rule for Python code).
 Yes:
 ```js
 if (someReallyLongBooleanVariableIMeanReallyLong &&
-        someOtherBoolean) {
+    someOtherBoolean) {
     return "monkeys";
 }
 ```
@@ -121,7 +124,7 @@ if (someReallyLongBooleanVariableIMeanReallyLong &&
 No:
 ```js
 if (someReallyLongBooleanVariableIMeanReallyLong &&
-    someOtherBoolean) {
+        someOtherBoolean) {
     return "monkeys";
 }
 ```
@@ -149,6 +152,16 @@ if (blah) {
     baz2();
 }
 ```
+Yes:
+```js
+if (true) blah();
+```
+
+No:
+```js
+if (true) { blah(); }
+```
+
 
 No:
 ```js
@@ -165,7 +178,7 @@ const color = selected ? 'green' : 'orange'
 ```
 
 If the ternary is too long to fit on a single line, within the
-79-character limit, each fork of the ternary should be on its own
+120-character limit, each fork of the ternary should be on its own
 line.
 
 Yes:
@@ -241,10 +254,8 @@ if ( ( a === b ) || ( b === c ) ) {...}
 
 #### Line length
 
-Lines should not exceed 79 characters.  (This is called the "80
+Lines should not exceed 119 characters.  (This is longer than the "80
 character rule," leaving 1 character for the newline.)
-
-This is consistent with our Python style guide, which adheres to PEP8.
 
 #### Imports
 
@@ -275,6 +286,8 @@ we didn't write it.  KaTeX is third party in webapp because even
 though we wrote it, its primary sources lives in a different
 repository.
 
+Imports should be alphabetized by the name of the library as best as possible.
+
 **Named Imports**
 Named imports should go on the same line, when possible. When 3+ named
 imports are imported, break each named import onto its own line.
@@ -282,21 +295,21 @@ imports are imported, break each named import onto its own line.
 Yes:
 ```js
 import $ from "jquery";
-import Kicksend from "../../third_party/javascript-khansrc/mailcheck/mailcheck.js";
-import React, {Component} from "react";
 import _ from "underscore";
+import Kicksend from "../../third_party/javascript-khansrc/mailcheck/mailcheck.js";
+import {Component}, React from "react";
 
 import APIActionResults from "../shared-package/api-action-results.js";
 import Cookies from "../shared-package/cookies.js";
+import cookieStoreRenderer from "../shared-package/cookie-store.handlebars";
 import DashboardActions from './datastores/dashboard-actions.js';
 import HappySurvey from "../missions-package/happy-survey.jsx";
-import UserMission from "../missions-package/user-mission.js";
-import cookieStoreRenderer from "../shared-package/cookie-store.handlebars";
 import mainThing, {
     firstOtherThing,
     secondOtherThing,
     thirdOtherThing,
 } from '../somewhere';
+import UserMission from "../missions-package/user-mission.js";
 
 import type {Thing} from '../somewhere-else';
 ```
@@ -441,6 +454,11 @@ if (someVariable == null) {
 
 Though you will often want to just check against falsey values, and
 can just say `if (!someVariable) {...}`.
+
+For comparing if two objects are not equal, use:
+```js
+if (obj1 !== obj2)
+```
 
 #### Array and Object literals
 
@@ -588,6 +606,8 @@ use rest params like `(...args) => foo(args)`.
 #### Use backticks for string interpolation
 
 `+` is not forbidden, but backticks are encouraged!
+
+**STOPPING PLACE 7/10/17**
 
 #### Use ES6 classes for React classes
 
