@@ -607,8 +607,6 @@ use rest params like `(...args) => foo(args)`.
 
 `+` is not forbidden, but backticks are encouraged!
 
-**STOPPING PLACE 7/10/17**
-
 #### Use ES6 classes for React classes
 
 See [React Use ES6 classes](react.md#use-es6-classes) for details.
@@ -617,8 +615,6 @@ For classes outside of React -- which should actually be pretty rare -- you
 should also use ES6 classes.  Some things to keep in mind when using ES6
 classes:
 
-- Use `static` properties instead of adding propertiers to the class object
-  after defining the class.
 - Use `extend` syntax for inheritance.
 
 
@@ -629,15 +625,6 @@ code.
 
 This rule may change once all our supported browsers support ES6
 natively.
-
-#### Do not use `Set` or `Map`
-
-The polyfills for these, though not huge, are large enough it's not
-worth the (small) benefit of using these classes for hashtables
-instead of just using `object`.
-
-This rule may change if strong enough support for these types is
-evinced.
 
 #### Use `let` and `const` for new files; do not use `var`
 
