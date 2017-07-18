@@ -24,6 +24,36 @@ For more discussion, see http://stackoverflow.com/questions/1944569/how-do-i-wri
 
 ## Imports
 
+### Import Order
+
+All imports should be divided into up to four sections:
+
+- System-level Imports
+- 3rd-Party Vendors
+- eRAMS Core Libraries
+- Project-Specific Imports
+
+Imports will be organized alphabetically by the fully qualified module name only.  This means that imports beginning with `from <module_path> import <module>` will be mixed in with `import <module>` and `import <module> as <alias>`.
+
+eRAMS Core imports will always be aliased with the `er2_<module>` prefix (see below).
+
+```py
+import os                                 # system-level imports
+from bson.objectid import ObjectId        # BAD: importing a class from a module
+
+                                          # 3rd-party imports
+from django.conf import admin             # Sort by django.conf.admin, the fully-qualified module name
+import django.conf.settings
+from django.contrib.auth import hashers   # correctly importing a module
+
+
+                                          # eRAMS core imports
+import er2.common.urls as er2_urls        # Always alias er2 packages with `er2_`
+
+imports services                          # project-specific imports
+
+```
+
 ### from...import
 
 Only import entire modules, never individual symbols from a module. For top-level modules, that means `import foo`. For sub-modules, you can do either `import foo.bar` or `from foo import bar`.
