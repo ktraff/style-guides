@@ -39,7 +39,7 @@ eRAMS Core imports will always be aliased with the `er2_<module>` prefix (see be
 
 ```py
 import os                                 # system-level imports
-from bson.objectid import ObjectId        # BAD: importing a class from a module
+from bson.objectid import ObjectId        # BAD: importing a class from a module, and bson.objectid goes before `os`
 
                                           # 3rd-party imports
 from django.conf import admin             # Sort by django.conf.admin, the fully-qualified module name
